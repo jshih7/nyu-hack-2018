@@ -8,12 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jshih7/nyu-hack-2018.git"
+    "url": "https://github.com/jshih7/nyu-hack-2018.git"
   },
   "author": "Liushifeng Chen, Lily Lin, Jeffrey Shih",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jshih7/nyu-hack-2018/issues"
   },
-  "homepage": "https://github.com/jshih7/nyu-hack-2018#readme"
+  "homepage": "https://github.com/jshih7/nyu-hack-2018#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
