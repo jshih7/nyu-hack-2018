@@ -4,7 +4,9 @@
   "description": "NYU Hackathon 2018",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "echo test",
+    "start": "node index",
+    "watch": "nodemon -e js,jade"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,7 @@
   },
   "homepage": "https://github.com/jshih7/nyu-hack-2018#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "nodemon": "^1.17.2"
   }
 }
