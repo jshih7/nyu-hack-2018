@@ -2,8 +2,8 @@ const path = require("path");
 const SequelizeAuto = require("sequelize-auto");
 
 const database = "ReAction";
-const username = "root";
-const password = "temp";
+const username = "reaction";
+const password = "nyuhack2018";
 const options = {
 	host: "localhost",
     dialect: "mysql",
