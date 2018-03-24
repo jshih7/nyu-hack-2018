@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo test",
     "start": "node index",
-    "watch": "nodemon -e js,jade"
+    "watch": "nodemon -e js,pug"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/jshih7/nyu-hack-2018#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.17.2",
+    "pug": "^2.0.3"
   }
 }

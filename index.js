@@ -17,8 +17,15 @@ const routes = require(path.join(routesPath, "routes"));
 const app = express(); 
 const port = process.env.PORT || 3000;
 
-// App configs 
+// Local variables, persisting through the app
+app.locals.siteName = "Re-Action";
+
+// Routes initialization
 app.use(routes);
+
+// Template settings
+app.set("view engine", "pug");
+app.set("views", viewsPath);
 
 // Start server 
 app.listen(port, function() {
