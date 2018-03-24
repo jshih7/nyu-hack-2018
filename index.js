@@ -1,6 +1,7 @@
 // Node modules
 const path = require("path");
 const express = require("express");
+const bodyParser = require("body-parser");
  
 // Paths for local modules / files
 const jsPath = path.join(__dirname, "js");
@@ -20,12 +21,17 @@ const port = process.env.PORT || 3000;
 // Local variables, persisting through the app
 app.locals.siteName = "Re-Action";
 
-// Routes initialization
-app.use(routes);
-
 // Template settings
 app.set("view engine", "pug");
 app.set("views", viewsPath);
+
+// Middleware (to deal with res/req objects)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Routes initialization
+// Must do this AFTER defining all configs or they won't work
+app.use(routes);
 
 // Start server 
 app.listen(port, function() {
