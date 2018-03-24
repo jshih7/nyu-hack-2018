@@ -1,0 +1,19 @@
+{
+  "name": "nyu-hack-2018",
+  "version": "1.0.0",
+  "description": "NYU Hackathon 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jshih7/nyu-hack-2018.git"
+  },
+  "author": "Liushifeng Chen, Lily Lin, Jeffrey Shih",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jshih7/nyu-hack-2018/issues"
+  },
+  "homepage": "https://github.com/jshih7/nyu-hack-2018#readme"
+}
