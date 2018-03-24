@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo test",
+    "clean": "rm -rf lib/models",
+    "models": "node generate-models",
+    "build": "npm run clean && npm run models",
     "start": "node index",
     "watch": "nodemon -e js,pug"
   },
