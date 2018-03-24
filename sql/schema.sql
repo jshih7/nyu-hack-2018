@@ -1,5 +1,5 @@
 -- To put into MySQL:
--- mysql -u root --password=temp < schema.sql
+-- mysql -u reaction --password=nyuhack2018 ReAction < schema.sql
 
 -- DROP SCHEMA IF EXISTS `ReAction`;
 
