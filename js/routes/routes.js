@@ -36,7 +36,8 @@ const router = express.Router();
 // Home page 
 router.route("/")
 .all(function(req, res, next) {
-    res.redirect("/register");
+    // currently hard redirecting to register/login for testing purposes
+    res.redirect("/login");
 });
 
 // Login page
@@ -45,11 +46,28 @@ router.route("/login")
     res.render("login");
 })
 .post(function(req, res) {
-    const loginCredentials = {
-        username: req.body.username,
-        password: req.body.password
-    };
-    res.send(loginCredentials);
+    // Return 400 bad request if fields are missing
+    // ex. request through curl rather than HTML form
+    if (!req.body.username || !req.body.password) {
+        res.status("400");
+        res.send("Bad request");
+    } else {
+        Users.findOne({
+            where: {
+                user: req.body.username,
+                pass: req.body.password,
+            }
+        })
+        .then(function(results) {
+            if(results) {
+                res.send("Login successful! Welcome back " + results.dataValues.fname + "!")
+            } else {
+                res.render("login", {
+                    error: "Invalid login username or password.",
+                });
+            }
+        });
+    }
 });
 
 // Register page
@@ -65,43 +83,44 @@ router.route("/register")
         || !req.body.phone || !req.body.email) {
         res.status("400");
         res.send("Bad request");
-    }
-    // Check if user or e-mail already exists
-    Users.findOne({
-        where: {
-            [or]: {
-                user: req.body.username,
-                email: req.body.email,
+    } else {
+        // Check if user or e-mail already exists
+        Users.findOne({
+            where: {
+                [or]: {
+                    user: req.body.username,
+                    email: req.body.email,
+                }
             }
-        }
-    })
-    .then(function(results) {
-        if(!results) {
-            // TODO: generate password hash
-            const usertype = 'donor'; // temporary 
-            const newUser = {
-                utype: usertype,
-                user: req.body.username,
-                pass: req.body.password,
-                fname: req.body.firstname,
-                lname: req.body.lastname,
-                phone: req.body.phone,
-                email: req.body.email,
-                regtime: sequelize.fn("NOW"),
-            };
-            return Users.create(newUser)
-            .then(function(results) {
-                res.send("Registration successful! Hello " + results.dataValues.fname + "!");
-            });
-        } else {
-            res.render('register', {
-                error: "ERROR: Username/e-mail is already taken.",
-            });
-        }
-    })
-    .catch(function(err) {
-        console.log("ERROR with POST to /register: ", err);
-    });
+        })
+        .then(function(results) {
+            if(!results) {
+                // TODO: generate password hash
+                const usertype = 'donor'; // temporary 
+                const newUser = {
+                    utype: usertype,
+                    user: req.body.username,
+                    pass: req.body.password,
+                    fname: req.body.firstname,
+                    lname: req.body.lastname,
+                    phone: req.body.phone,
+                    email: req.body.email,
+                    regtime: sequelize.fn("NOW"),
+                };
+                return Users.create(newUser)
+                .then(function(results) {
+                    res.send("Registration successful! Hello " + results.dataValues.fname + "!");
+                });
+            } else {
+                res.render('register', {
+                    error: "Username/e-mail is already taken.",
+                });
+            }
+        })
+        .catch(function(err) {
+            console.log("ERROR with POST to /register: ", err);
+        });
+    }
 });
 
 module.exports = router;
