@@ -1,9 +1,3 @@
-//Getting user info
-var data = {};
-data.username = "Jeff";
-data.role   = "donor";
-document.getElementById("user").append(data.username+'. You are signed in as a '+data.role+'.');
-
 //Task 1
 var canvas = document.getElementById('c1');
 canvas.width = 100;
