@@ -43,7 +43,7 @@ router.route("/")
 // Login page
 router.route("/login")
 .get(checkUserAuth, function(req, res) {
-    res.render("login");
+    res.render("login.pug");
 })
 .post(function(req, res) {
     // Return 400 bad request if fields are missing
@@ -65,7 +65,7 @@ router.route("/login")
                 createUserSession(req.session, user);
                 res.redirect("/dashboard");
             } else {
-                res.render("login", {
+                res.render("login.pug", {
                     error: "Invalid login username or password.",
                 });
             }
@@ -76,7 +76,7 @@ router.route("/login")
 // Register page
 router.route("/register")
 .get(checkUserAuth, function(req, res) {
-    res.render("register");
+    res.render("register.pug");
 })
 .post(function(req, res) {
     // Return 400 bad request if fields are missing
@@ -117,7 +117,7 @@ router.route("/register")
                     res.redirect("/dashboard");
                 });
             } else {
-                res.render('register', {
+                res.render('register.pug', {
                     error: "Username/e-mail is already taken.",
                 });
             }
@@ -131,7 +131,7 @@ router.route("/register")
 // Dashboard page
 router.route("/dashboard")
 .get(confirmUserSession, function(req, res) {
-    res.render("dashboard", {
+    res.render("dashboard.pug", {
         user: req.session.user,
     });
 })
@@ -141,7 +141,7 @@ router.route("/dashboard")
 // Progress page for donors
 router.route("/progress")
 .get(function(req, res) {
-    res.render("progress", {
+    res.render("progress.ejs", {
         user: req.session.user,
     });
 })
@@ -149,7 +149,7 @@ router.route("/progress")
 // Event page for donors
 router.route("/progress/haiti")
 .get(function(req, res) {
-    res.render("event", {
+    res.render("event.ejs", {
         user: req.session.user,
     });
 })
