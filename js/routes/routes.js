@@ -140,7 +140,7 @@ router.route("/dashboard")
 
 // Progress page for donors
 router.route("/progress")
-.get(function(req, res) {
+.get(checkBadRequestVolunteers, function(req, res) {
     res.render("progress.ejs", {
         user: req.session.user,
     });
@@ -148,11 +148,18 @@ router.route("/progress")
 
 // Event page for donors
 router.route("/progress/haiti")
-.get(function(req, res) {
+.get(checkBadRequestVolunteers, function(req, res) {
     res.render("event.ejs", {
         user: req.session.user,
     });
 })
+
+// 404 not found for all other pages
+router.route("/*")
+.all(function(req, res) {
+    res.status(404).send("Not found");
+});
+
 // Functions
 
 // Create new session for signed up / logged in users
@@ -180,6 +187,35 @@ function checkUserAuth(req, res, next) {
 function confirmUserSession(req, res, next) {
     if (!req.session || !req.session.user) {
         res.redirect("/login");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to guest end users accessing certain pages 
+function checkBadRequest(req, res, next) {
+    if (!req.session || !req.session.user) {
+        res.status(404).send("Not found");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to donors accessing volunteer pages
+function checkBadRequestDonors(req, res, next) {
+    if (!req.session || !req.session.user
+        || req.session.user.utype === "donor") {
+        res.status(404).send("Not found");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to volunteers accessing donor pages
+function checkBadRequestVolunteers(req, res, next) {
+    if (!req.session || !req.session.user
+        || req.session.user.utype === "volunteer") {
+        res.status(404).send("Not found");
     } else {
         next();
     }
