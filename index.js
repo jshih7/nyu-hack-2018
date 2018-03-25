@@ -1,7 +1,10 @@
-// Node modules
+// Important node modules
 const path = require("path");
 const express = require("express");
+
+// Node modules for express
 const bodyParser = require("body-parser");
+const session = require("express-session");
  
 // Paths for local modules / files
 const jsPath = path.join(__dirname, "js");
@@ -32,6 +35,14 @@ app.use(express.static(path.join(publicPath, "startbootstrap-new-age-gh-pages"))
 // Middleware (to deal with res/req objects)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(session({
+    secret: "nyuhack2018-session",
+    cookie: {
+        name: "nyuhack2018-cookie",
+        //secure: true, // for testing, turn this off or cookie won't be created
+        maxAge: 30 * 60 * 1000, // 30 min
+    },
+}));
 
 // Routes initialization
 // Must do this AFTER defining all configs or they won't work
