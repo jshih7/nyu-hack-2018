@@ -25,6 +25,10 @@ app.locals.siteName = "Re-Action";
 app.set("view engine", "pug");
 app.set("views", viewsPath);
 
+// Enable static files
+// For landing page, why doesn't it work if we just use "public"?
+app.use(express.static(path.join(publicPath, "startbootstrap-new-age-gh-pages")));
+
 // Middleware (to deal with res/req objects)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
