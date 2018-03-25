@@ -42,10 +42,10 @@ router.route("/")
 
 // Login page
 router.route("/login")
-.get(checkUserAuth, function(req, res) {
+.get(checkLoggedIn, function(req, res) {
     res.render("login.pug");
 })
-.post(function(req, res) {
+.post(checkLoggedIn, function(req, res) {
     // Return 400 bad request if fields are missing
     // ex. request through curl rather than HTML form
     if (!req.body.username || !req.body.password) {
@@ -71,14 +71,16 @@ router.route("/login")
             }
         });
     }
-});
+})
+// all other requests are bad
+.all(sendBadRequest);
 
 // Register page
 router.route("/register")
-.get(checkUserAuth, function(req, res) {
+.get(checkLoggedIn, function(req, res) {
     res.render("register.pug");
 })
-.post(function(req, res) {
+.post(checkLoggedIn, function(req, res) {
     // Return 400 bad request if fields are missing
     // ex. request through curl rather than HTML form
     if (!req.body.username || !req.body.password
@@ -126,53 +128,61 @@ router.route("/register")
             console.log("ERROR with HTTP request to /register: ", err);
         });
     }
-});
+})
+// all other requests are bad
+.all(sendBadRequest);
 
 // Dashboard page
 router.route("/dashboard")
-.get(confirmUserSession, function(req, res) {
+.get(checkLoggedOut, function(req, res) {
     res.render("dashboard.pug", {
         user: req.session.user,
     });
 })
-.post(function(req, res) {
-});
+// all other requests are bad
+.all(sendBadRequest);
 
 // Profile page
 router.route("/profile")
-.get(checkBadRequest, function(req, res) {
+.get(check404, function(req, res) {
     res.redirect("profile.pug");
 })
-.post(checkBadRequest, function(req, res) {
-});
+.post(check404, function(req, res) {
+})
+// all other requests are bad
+.all(sendBadRequest);
 
 // Logout
 router.route("/logout")
 .get(clearUserSession, function(req, res) {
     res.redirect("/");
-});
+})
+// all other requests are bad
+.all(sendBadRequest);
 
 // Progress page for donors
 router.route("/progress")
-.get(checkBadRequestVolunteers, function(req, res) {
+.get(check404Volunteers, function(req, res) {
     res.render("progress.ejs", {
         user: req.session.user,
     });
 })
+// all other requests are bad
+.all(sendBadRequest);
 
 // Event page for donors
 router.route("/progress/haiti")
-.get(checkBadRequestVolunteers, function(req, res) {
+.get(check404Volunteers, function(req, res) {
     res.render("event.ejs", {
         user: req.session.user,
     });
 })
+// all other requests are bad
+.all(sendBadRequest);
 
 // 404 not found for all other pages
 router.route("/*")
-.all(function(req, res) {
-    res.status(404).send("Not found");
-});
+.all(send404);
 
 // Functions
 
@@ -195,7 +205,7 @@ function clearUserSession(req, res, next) {
 }
 
 // Redirect to dashboard if already logged in
-function checkUserAuth(req, res, next) {
+function checkLoggedIn(req, res, next) {
     if (req.session && req.session.user) {
         res.redirect("/dashboard");
     } else {
@@ -204,7 +214,7 @@ function checkUserAuth(req, res, next) {
 }
 
 // Redirect to login page if user logged out
-function confirmUserSession(req, res, next) {
+function checkLoggedOut(req, res, next) {
     if (!req.session || !req.session.user) {
         res.redirect("/login");
     } else {
@@ -212,8 +222,18 @@ function confirmUserSession(req, res, next) {
     }
 }
 
-// Send a 404 not found to guest end users accessing certain pages 
-function checkBadRequest(req, res, next) {
+// Send a 400 bad request for non-handled HTTP requests for all routes
+function sendBadRequest(req, res, next) {
+    res.status(400).send("Bad request");
+}
+
+// Send a 404 not found for all non-handled routes
+function send404(req, res, next) {
+    res.status(404).send("Not found");
+}
+
+// Send a 404 not found to non logged-in users when accessing registered pages 
+function check404(req, res, next) {
     if (!req.session || !req.session.user) {
         res.status(404).send("Not found");
     } else {
@@ -222,7 +242,7 @@ function checkBadRequest(req, res, next) {
 }
 
 // Send a 404 not found to donors accessing volunteer pages
-function checkBadRequestDonors(req, res, next) {
+function check404Donors(req, res, next) {
     if (!req.session || !req.session.user
         || req.session.user.utype === "donor") {
         res.status(404).send("Not found");
@@ -232,7 +252,7 @@ function checkBadRequestDonors(req, res, next) {
 }
 
 // Send a 404 not found to volunteers accessing donor pages
-function checkBadRequestVolunteers(req, res, next) {
+function check404Volunteers(req, res, next) {
     if (!req.session || !req.session.user
         || req.session.user.utype === "volunteer") {
         res.status(404).send("Not found");
