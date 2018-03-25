@@ -37,7 +37,7 @@ const router = express.Router();
 router.route("/")
 .all(function(req, res, next) {
     // currently hard redirecting to register/login for testing purposes
-    res.redirect("/login");
+    res.sendFile(path.join(__dirname, "../public/startbootstrap-new-age-gh-pages/index.html"));
 });
 
 // Login page
