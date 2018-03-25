@@ -37,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
     secret: "nyuhack2018-session",
+    resave: false, // default
+    saveUninitialized: false, // false helps with logins
     cookie: {
         name: "nyuhack2018-cookie",
         //secure: true, // for testing, turn this off or cookie won't be created
