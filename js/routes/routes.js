@@ -138,6 +138,21 @@ router.route("/dashboard")
 .post(function(req, res) {
 });
 
+// Progress page for donors
+router.route("/progress")
+.get(function(req, res) {
+    res.render("progress", {
+        user: req.session.user,
+    });
+})
+
+// Event page for donors
+router.route("/progress/haiti")
+.get(function(req, res) {
+    res.render("event", {
+        user: req.session.user,
+    });
+})
 // Functions
 
 // Create new session for signed up / logged in users
