@@ -1,0 +1,285 @@
+body {
+  font-family: "Share Tech";
+  margin: 0px;
+  background: #ededf2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #333;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  margin: 8px 0px 6px 10px;
+  font-size: 17px;
+}
+
+h4 {
+  margin: 8px 0px 6px 20px;
+  font-size: 18px;
+}
+
+h5 {
+  font-size: 18px;
+    margin: 12px 0px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.content {
+  margin: 10px;
+}
+
+.banner {
+  height: 60px;
+  width: 100%;
+  background: #5a5a89;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding-bottom: 5px;
+}
+
+.navbar {
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.greynav {
+  opacity: 0.6;
+}
+
+.greynav:hover {
+  opacity: 1;
+}
+
+.greynav:active {
+  margin-top:1px;
+}
+
+.logo {
+  font-family: 'Medula One';
+  font-size: 44px;
+  width: 280px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.projectpic {
+  border-radius: 30px;;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background: url("https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F5877c8c01700008801929bc7.jpeg?1521931922949");
+  background-size: cover; 
+}
+
+p {
+  margin: 0px;
+}
+
+.sub {
+  width: 85px;
+  padding: 4px 4px;
+  background: rgb(198,242,217);
+  border: 1px solid rgb(46,204,113);
+  text-align: center;
+  margin-left: 20px;
+  border-radius: 15px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.check {
+  margin-right: 3px;
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+}
+
+.alltasksummary {
+  display: flex;
+  flex-direction: row;
+  width: 622px;
+  justify-content: space-between;
+}
+
+.tasksummary {
+  background-color: white;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #bbb;
+  border-width: 1px 1px 0px 1px;
+  border-radius: 20px 20px 0px 0px;
+}
+
+#task2,#task3 {
+  opacity: 0.5;
+  cursor:pointer;
+}
+
+.taskdetails {
+  background: white; 
+  height: 100%;
+  width: 600px;
+  border: 1px solid #bbb;
+  border-width: 0px 1px 0px 1px;
+  padding: 10px;
+}
+
+#d2,#d3 {
+  display:none;
+}
+
+#task2:hover,#task3:hover {
+  opacity:0.9;
+}
+
+.title {
+  background: #f4f4f9;
+  border-radius: 20px 20px 0px 0px;
+  text-align: center;
+}
+
+.funding {
+  padding: 0 10px;
+  margin-top: 10px;
+}
+
+.yourdonation {
+  margin-top: 4px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.donation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.donatebutton {
+  height: 17px;
+  width: 40px;
+  font-size: 12px;
+  background: #d8d0c3;
+  text-align: center;
+  border: 1px solid grey;
+  margin-left: 4px;
+  padding-top: 1px;
+}
+
+.donatebutton:hover {
+  box-shadow: 0 0 3px 0px grey;
+  background: #e8e0d3;
+}
+
+.progress, .taskprogress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#c2,#c4,#c6 {
+  margin: 10px;
+}
+
+.projlist {
+  background: white;
+  width: 622px;
+}
+
+.projrow{
+  background: white;
+  margin: 10px 20px;
+  border: 1px solid #dcdce8;
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.taskprogressholder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 50px;
+}
+
+.lastupdate {
+  font-size: 12px;
+  font-weight: 400;
+  color: #555;
+}
+
+.smallsub {
+  width: 20px;
+  padding: 2px 3px 3px 3px;
+  margin-bottom: 13px;
+  margin-left: 7px;
+}
+
+.projrowright {
+  border-left: 1px solid #dcdce8;
+  width: 100px;
+  padding: 20px;
+}
+
+.totalcon {
+  font-size: 18px;
+  text-align: right;
+}
+
+#p1 {
+  opacity:0.8;
+}
+#p1:hover {
+  opacity:1;
+}
+
+#p2 {
+  background: #f5f5f5;
+  opacity: 0.6;
+}
+#p2:hover {
+  opacity:0.8;
+}
