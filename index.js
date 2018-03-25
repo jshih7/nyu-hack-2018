@@ -26,11 +26,14 @@ app.locals.siteName = "Re-Action";
 
 // Template settings
 app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.set("views", viewsPath);
 
 // Enable static files
-// For landing page, why doesn't it work if we just use "public"?
+// This allows us to use relative paths for files (to the public folder, which is treated at root) in HTML files
+// Including multiple public folders are fine UNLESS there are files with the same name
 app.use(express.static(path.join(publicPath, "startbootstrap-new-age-gh-pages")));
+app.use(express.static(path.join(publicPath, "donor-pages")));
 
 // Middleware (to deal with res/req objects)
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -17,6 +17,10 @@ nav.navbar.navbar-default.navbar-static-top
           a(href='/') Home
 
       if user
+        if user.utype === 'donor'
+          ul.nav.navbar-nav.navbar
+            li(class='#{nav.Progress}')
+              a(href='/progress') View Progress 
         ul.nav.navbar-nav.navbar-right
           li(class='#{nav.Profile}')
             a(href='/profile') Edit Profile

@@ -43,7 +43,7 @@ router.route("/")
 // Login page
 router.route("/login")
 .get(checkUserAuth, function(req, res) {
-    res.render("login");
+    res.render("login.pug");
 })
 .post(function(req, res) {
     // Return 400 bad request if fields are missing
@@ -65,7 +65,7 @@ router.route("/login")
                 createUserSession(req.session, user);
                 res.redirect("/dashboard");
             } else {
-                res.render("login", {
+                res.render("login.pug", {
                     error: "Invalid login username or password.",
                 });
             }
@@ -76,7 +76,7 @@ router.route("/login")
 // Register page
 router.route("/register")
 .get(checkUserAuth, function(req, res) {
-    res.render("register");
+    res.render("register.pug");
 })
 .post(function(req, res) {
     // Return 400 bad request if fields are missing
@@ -117,7 +117,7 @@ router.route("/register")
                     res.redirect("/dashboard");
                 });
             } else {
-                res.render('register', {
+                res.render('register.pug', {
                     error: "Username/e-mail is already taken.",
                 });
             }
@@ -131,11 +131,33 @@ router.route("/register")
 // Dashboard page
 router.route("/dashboard")
 .get(confirmUserSession, function(req, res) {
-    res.render("dashboard", {
+    res.render("dashboard.pug", {
         user: req.session.user,
     });
 })
 .post(function(req, res) {
+});
+
+// Progress page for donors
+router.route("/progress")
+.get(checkBadRequestVolunteers, function(req, res) {
+    res.render("progress.ejs", {
+        user: req.session.user,
+    });
+})
+
+// Event page for donors
+router.route("/progress/haiti")
+.get(checkBadRequestVolunteers, function(req, res) {
+    res.render("event.ejs", {
+        user: req.session.user,
+    });
+})
+
+// 404 not found for all other pages
+router.route("/*")
+.all(function(req, res) {
+    res.status(404).send("Not found");
 });
 
 // Functions
@@ -165,6 +187,35 @@ function checkUserAuth(req, res, next) {
 function confirmUserSession(req, res, next) {
     if (!req.session || !req.session.user) {
         res.redirect("/login");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to guest end users accessing certain pages 
+function checkBadRequest(req, res, next) {
+    if (!req.session || !req.session.user) {
+        res.status(404).send("Not found");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to donors accessing volunteer pages
+function checkBadRequestDonors(req, res, next) {
+    if (!req.session || !req.session.user
+        || req.session.user.utype === "donor") {
+        res.status(404).send("Not found");
+    } else {
+        next();
+    }
+}
+
+// Send a 404 not found to volunteers accessing donor pages
+function checkBadRequestVolunteers(req, res, next) {
+    if (!req.session || !req.session.user
+        || req.session.user.utype === "volunteer") {
+        res.status(404).send("Not found");
     } else {
         next();
     }
