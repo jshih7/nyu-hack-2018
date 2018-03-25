@@ -6,11 +6,10 @@
   "scripts": {
     "test": "echo test",
     "schema": "mysql -u reaction --password=nyuhack2018 ReAction < sql/schema.sql",
-    "clean": "rm -rf js/models",
-    "models": "node generate-models",
-    "build": "npm run clean && npm run models",
+    "clean": "rm -rf node_modules",
+    "models": "rm -rf js/models && node generate-models",
     "start": "node index",
-    "watch": "nodemon -e js,pug"
+    "watch": "nodemon -e js,pug,css"
   },
   "repository": {
     "type": "git",
