@@ -1,3 +1,9 @@
+//Getting user info
+var data = {};
+data.username = "Jeff";
+data.role   = "donor";
+document.getElementById("user").append(data.username+'. You are signed in as a '+data.role+'.');
+
 //Task 1
 var canvas = document.getElementById('c1');
 canvas.width = 100;
@@ -8,8 +14,8 @@ c.fillRect(0, 0, 100, 20);
 c.fillStyle="#9797e5";
 c.fillRect(0, 0, 70, 20);
   c.fillStyle="#222";
-c.font = "14px Share Tech";
-c.fillText("$3160/$4210",14,15);          
+c.font = "12px Arial";
+c.fillText("$3160/$4210",10,15);          
 
 var canvas2 = document.getElementById('c2');
 canvas2.width = 100;
@@ -29,7 +35,7 @@ c2.stroke();
 
 c2.fillStyle='#000'; // For text color
 c2.textAlign='center';
-c2.font = '16pt Share Tech'; // for font specifying
+c2.font = "14pt Arial"; // for font specifying
 c2.fillText('75%',53,57); //text value & text position
 
 //Task 2
@@ -43,8 +49,8 @@ c3.fillRect(0, 0, 100, 20);
 c3.fillStyle="#9797e5";
 c3.fillRect(0, 0, 20, 20);
   c3.fillStyle="#222";
-c3.font = "14px Share Tech";
-c3.fillText("$1160/$6120",14,15);          
+c3.font = "12px Arial";
+c3.fillText("$1160/$6120",10,15);          
 
 var canvas4 = document.getElementById('c4');
 canvas4.width = 100;
@@ -64,7 +70,7 @@ c4.stroke();
 
 c4.fillStyle='#000'; // For text color
 c4.textAlign='center';
-c4.font = '16pt Share Tech'; // for font specifying
+c4.font = '14pt Arial'; // for font specifying
 c4.fillText('50%',53,57); //text value & text position
 
 //Task 3
@@ -78,8 +84,8 @@ c5.fillRect(0, 0, 100, 20);
 c5.fillStyle="#9797e5";
 c5.fillRect(0, 0, 35, 20);
   c5.fillStyle="#222";
-c5.font = "14px Share Tech";
-c5.fillText("$6210/$18000",14,15);  
+c5.font = "12px Arial";
+c5.fillText("$6210/$18000",5,15);  
 
 var canvas6 = document.getElementById('c6');
 canvas6.width = 100;
@@ -98,7 +104,7 @@ c6.stroke();
 
 c6.fillStyle='#000'; // For text color
 c6.textAlign='center';
-c6.font = '16pt Share Tech'; // for font specifying
+c6.font = '14pt Arial'; // for font specifying
 c6.fillText('30%',53,57); //text value & text position
 
 function show1() {
