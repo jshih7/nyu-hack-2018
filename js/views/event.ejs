@@ -18,7 +18,10 @@
       </div>
     </div>
     <div id="user">
-      Welcome, 
+      <%if (user) { %>
+		  Welcome, <%=user.fname%>! You are signed in as a <%=user.utype%>.
+      <% } %>
+    <div id="user">
     </div>
     <div class="container">
     <div class="content">
