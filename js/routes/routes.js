@@ -96,9 +96,8 @@ router.route("/register")
         .then(function(results) {
             if(!results) {
                 // TODO: generate password hash
-                const usertype = 'donor'; // temporary 
                 const newUser = {
-                    utype: usertype,
+                    utype: req.body.usertype,
                     user: req.body.username,
                     pass: req.body.password,
                     fname: req.body.firstname,
@@ -109,7 +108,7 @@ router.route("/register")
                 };
                 return Users.create(newUser)
                 .then(function(results) {
-                    res.send("Registration successful! Hello " + results.dataValues.fname + "!");
+                    res.send("Registration successful as a " + results.dataValues.utype + "! Hello " + results.dataValues.fname + "!");
                 });
             } else {
                 res.render('register', {

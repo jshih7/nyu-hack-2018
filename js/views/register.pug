@@ -12,6 +12,14 @@ block content
   form.form-group(method="post")
     input(type="hidden", name="_csrf", value=csrfToken)
     
+    span What are you registering as?
+    br
+    select(name="usertype")
+      option(value="donor") Donor
+      option(value="volunteer") Volunteer
+    br
+    br
+
     span Username:
     input.form-control(type="text", name="username", pattern="[A-Za-z0-9]+", maxlength=20, autofocus, placeholder="(alphanumeric, max 20 characters)", required=true)
     br
