@@ -59,10 +59,10 @@ router.route("/login")
             }
         })
         .then(function(results) {
-            if(results) {
+            if (results) {
                 //res.send("Login successful! Welcome back " + results.dataValues.fname + "!")
-                const user = results.dataValues;
-                createUserSession(req.session, user);
+                const userData = results.dataValues;
+                createUserSession(req.session, userData);
                 res.redirect("/dashboard");
             } else {
                 res.render("login.pug", {
@@ -99,7 +99,7 @@ router.route("/register")
             }
         })
         .then(function(results) {
-            if(!results) {
+            if (!results) {
                 // TODO: generate password hash
                 const newUser = {
                     utype: req.body.usertype,
@@ -114,8 +114,8 @@ router.route("/register")
                 return Users.create(newUser)
                 .then(function(results) {
                     //res.send("Registration successful as a " + results.dataValues.utype + "! Hello " + results.dataValues.fname + "!");
-                    const user = results.dataValues;
-                    createUserSession(req.session, user);
+                    const userData = results.dataValues;
+                    createUserSession(req.session, userData);
                     res.redirect("/dashboard");
                 });
             } else {
@@ -145,9 +145,68 @@ router.route("/dashboard")
 // Profile page
 router.route("/profile")
 .get(check404, function(req, res) {
-    res.redirect("profile.pug");
+    res.render("profile.pug", {
+        user: req.session.user,
+    });
 })
 .post(check404, function(req, res) {
+    // Return 400 bad request if password is missing
+    // ex. request through curl rather than HTML form
+    if (!req.body.password) {
+        res.status("400").send("Bad request");
+    } else {
+        Users.findOne({
+            attributes: [
+                'pass',
+                'fname',
+                'lname',
+            ],
+            where: {
+                user: req.session.user.user,
+            }
+        })
+        .then(function(results) {
+            if (results) {
+                if (req.body.password === results.pass) {
+                    const userData = results.dataValues;
+                    Users.update({ 
+                        fname: req.body.firstname,
+                        lname: req.body.lastname,
+                    }, {
+                        where: {
+                           user: req.session.user.user, 
+                        }
+                    })
+                    .then(function() {
+                        // Update session with new profile details
+                        req.session.user.fname = req.body.firstname;
+                        req.session.user.lname = req.body.lastname;
+                        res.render('profile.pug', {
+                            success: "Profile updated.",
+                            user: req.session.user,
+                        });
+                    })
+                    .catch(function(err) {
+                        res.render('profile.pug', {
+                            error: err.message,
+                            user: req.session.user,
+                        });
+                    });
+                } else {
+                    res.render('profile.pug', {
+                        error: "Incorrect password.",
+                        user: req.session.user,
+                   });
+                }
+            }
+        })
+        .catch(function(err) {
+            res.render('profile.pug', {
+                error: err.message,
+                user: req.session.user,
+            });
+        });
+    }
 })
 // all other requests are bad
 .all(sendBadRequest);
