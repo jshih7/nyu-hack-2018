@@ -35,14 +35,14 @@ const router = express.Router();
 
 // Home page 
 router.route("/")
+// doesn't work with checkUserAuth, but we don't need it
 .all(function(req, res, next) {
-    // currently hard redirecting to register/login for testing purposes
     res.sendFile(path.join(__dirname, "../public/startbootstrap-new-age-gh-pages/index.html"));
 });
 
 // Login page
 router.route("/login")
-.get(function(req, res) {
+.get(checkUserAuth, function(req, res) {
     res.render("login");
 })
 .post(function(req, res) {
@@ -60,7 +60,10 @@ router.route("/login")
         })
         .then(function(results) {
             if(results) {
-                res.send("Login successful! Welcome back " + results.dataValues.fname + "!")
+                //res.send("Login successful! Welcome back " + results.dataValues.fname + "!")
+                const user = results.dataValues;
+                createUserSession(req.session, user);
+                res.redirect("/dashboard");
             } else {
                 res.render("login", {
                     error: "Invalid login username or password.",
@@ -72,7 +75,7 @@ router.route("/login")
 
 // Register page
 router.route("/register")
-.get(function(req, res) {
+.get(checkUserAuth, function(req, res) {
     res.render("register");
 })
 .post(function(req, res) {
@@ -108,7 +111,10 @@ router.route("/register")
                 };
                 return Users.create(newUser)
                 .then(function(results) {
-                    res.send("Registration successful as a " + results.dataValues.utype + "! Hello " + results.dataValues.fname + "!");
+                    //res.send("Registration successful as a " + results.dataValues.utype + "! Hello " + results.dataValues.fname + "!");
+                    const user = results.dataValues;
+                    createUserSession(req.session, user);
+                    res.redirect("/dashboard");
                 });
             } else {
                 res.render('register', {
@@ -117,9 +123,51 @@ router.route("/register")
             }
         })
         .catch(function(err) {
-            console.log("ERROR with POST to /register: ", err);
+            console.log("ERROR with HTTP request to /register: ", err);
         });
     }
 });
+
+// Dashboard page
+router.route("/dashboard")
+.get(confirmUserSession, function(req, res) {
+    res.render("dashboard", {
+        user: req.session.user,
+    });
+})
+.post(function(req, res) {
+});
+
+// Functions
+
+// Create new session for signed up / logged in users
+function createUserSession(session, user) {
+    if (!session.user) {
+        session.user = {
+            user: user.user,
+            utype: user.utype,
+            fname: user.fname,
+            lname: user.lname,
+        };
+    }
+}
+
+// Redirect to dashboard if already logged in
+function checkUserAuth(req, res, next) {
+    if (req.session && req.session.user) {
+        res.redirect("/dashboard");
+    } else {
+        next();
+    }
+}
+
+// Redirect to login page if user logged out
+function confirmUserSession(req, res, next) {
+    if (!req.session || !req.session.user) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+}
 
 module.exports = router;
