@@ -5,12 +5,12 @@ const database = "ReAction";
 const username = "reaction";
 const password = "nyuhack2018";
 const options = {
-	host: "localhost",
+    host: "localhost",
     dialect: "mysql",
     directory: path.join(__dirname, "js/models"), // where to put models
-	additional: {
-		timestamps: false, // remove timestamps or sequelize expects createdAt field
-	},
+    additional: {
+        timestamps: false, // remove timestamps or sequelize expects createdAt field
+    },
 }
 
 const auto = new SequelizeAuto(database, username, password, options);
