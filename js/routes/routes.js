@@ -138,6 +138,20 @@ router.route("/dashboard")
 .post(function(req, res) {
 });
 
+// Profile page
+router.route("/profile")
+.get(checkBadRequest, function(req, res) {
+    res.redirect("profile.pug");
+})
+.post(checkBadRequest, function(req, res) {
+});
+
+// Logout
+router.route("/logout")
+.get(clearUserSession, function(req, res) {
+    res.redirect("/");
+});
+
 // Progress page for donors
 router.route("/progress")
 .get(checkBadRequestVolunteers, function(req, res) {
@@ -172,6 +186,12 @@ function createUserSession(session, user) {
             lname: user.lname,
         };
     }
+}
+
+// Clear session when logging out 
+function clearUserSession(req, res, next) {
+    req.session.destroy();
+    next();
 }
 
 // Redirect to dashboard if already logged in
