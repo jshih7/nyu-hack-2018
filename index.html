@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Re-action | Haitian Earth Quake Relief</title>
+    <title>Re-Action | My Projects</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech|Medula+One" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">    
     <script src="/script.js" defer></script>
   </head>
   <body>
@@ -14,200 +14,87 @@
       <div class="navbar">
         <div class="logo"><a href="/index.html">Re-action</a></div>
         <p class="greynav">Discover</p>
-        <a href="/index.html" class="greynav" id="greyed">My Projects</a>
+        <p>My Projects</p>
+<!--         <p class="greynav">Profile</p> -->
       </div>
     </div>
     <div id="user">
       Welcome, 
     </div>
-    <div class="container">
-    <div class="content">
-      <div class="header">
-        <div class="projectpic"></div>
-          <h1>2010 Haitian Earthquake Relief</h1>
-          <div class="sub"><img class="check" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2Fsign-check-icon.png?1521933033932">
-            following</div>
-      </div>
-      <div class="project">
-        <div class="task">
-          <div class="alltasksummary">
-            <div class="tasksummary" id="task1" onclick="show1()">
-              <div class="title">
-                <h3>1. Food Aid</h3>
-              </div>
-              <div class="funding">
-                <div class="donation">
-                    <canvas class="fundingbar" id="c1"></canvas>
-                  <div class="donatebutton">Donate</div>
-                </div>
-                <div class="yourdonation">
-                  You put in <strong>$85</strong>.
-                </div>
-              </div>
-              <div class="progress">
-                <canvas id="c2"></canvas>
-              </div>
-            </div>
-            
-            <div class="tasksummary" id="task2" onclick="show2()">
-              <div class="title">
-                <h3>2. Medical Aid</h3>
-              </div>
-              <div class="funding">
-                <div class="donation">
-                  <canvas class="fundingbar" id="c3"></canvas>
-                  <div class="donatebutton">Donate</div>
-                </div>
-                <div class="yourdonation">
-                  You put in <strong>$115</strong>.
-                </div>
-              </div>
-              <div class="progress">
-                <canvas id="c4"></canvas>
-              </div>
-            </div>            
-            
-            <div class="tasksummary" id="task3" onclick="show3()">
-              <div class="title">
-                <h3>3. Reconstruction</h3>
-              </div>
-              <div class="funding">
-                <div class="donation">
-                    <canvas class="fundingbar" id="c5"></canvas>
-                  <div class="donatebutton">Donate</div>
-                </div>
-                <div class="yourdonation">
-                  You put in <strong>$200</strong>.
-                </div>
-              </div>
-              <div class="progress">
-                <canvas id="c6"></canvas>
-              </div>
+  
+    
+    <div class="projlist">
+      <h4>Committed Projects</h4>
+      
+      <div class="projrow" id="p1">
+        <a href="/haiti.html">
+        <div class="projrowleft" id="pl1">
+          <div class="header" xid="header">
+            <div class="projectpic"></div>
+            <h2>
+              2010 Haitian Earthquake Relief
+              <div class="lastupdate">Last updated 21 hours ago.</div>
+            </h2>
+            <div class="sub smallsub">
+              <img class="check" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2Fsign-check-icon.png?1521933033932">
             </div>
           </div>
-          <div class="taskdetailcontainer">
-            <div class="taskdetails" id="d1">
-              <div class="budget">
-                <h5>Budget Breakdown</h5>
-                <p>1000x Food boxes: $3000</p>
-                <p>100x Manhour: $200</p>
-                <p>Packaging and delivery: $1010</p>
-                <p>Total: $4210</p>
-              </div>
-              <div class="socialmedia">
-                <h5>Project Updates</h5>
-                <div class="timeline">
-                  <div class="updateinfo">
-                    <p>
-                      Mar 25, 2018
-                    </p>
-                    <h5>
-                      Made orders from Wholesome Foods!
-                    </h5>
-                    <img class="progcirc" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F75.PNG?1521966643586">
-                  </div>
-                  <div class="tweets">
-                    <blockquote class="twitter-tweet" data-lang="en"><p lang="fr" dir="ltr">Depuis 2013, le PAM assiste les réfugiés centrafricains 🇨🇫 dans la Likouala.<br>L&#39;assistance alimentaire continue en 2018 auprès 1⃣9⃣1⃣0⃣5⃣ réfugiés grâce à la contribution <a href="https://twitter.com/USAIDFFP?ref_src=twsrc%5Etfw">@USAIDFFP</a> <a href="https://t.co/I9rx7mr7Qi">pic.twitter.com/I9rx7mr7Qi</a></p>&mdash; WFP Congo - PAM (@PamCongo) <a href="https://twitter.com/PamCongo/status/975726937141403648?ref_src=twsrc%5Etfw">March 19, 2018</a></blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </div>
-                </div>
-                
-                <div class="timeline">
-                  <div class="updateinfo">
-                    <p>
-                      Mar 5, 2018
-                    </p>
-                    <h5>
-                      Assembled 1000 boxes!
-                    </h5>
-                    <img class="progcirc" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F50.PNG?1521966688478">
-                  </div>
-                  <div class="tweets">
-                    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">22 million people in <a href="https://twitter.com/hashtag/Yemen?src=hash&amp;ref_src=twsrc%5Etfw">#Yemen</a> require humanitarian assistance just to meet their basic needs. Nearly 18 million Yemenis don’t have enough to eat. 📷: <a href="https://twitter.com/WFP?ref_src=twsrc%5Etfw">@WFP</a> <br><br>How <a href="https://twitter.com/USAID?ref_src=twsrc%5Etfw">@USAID</a> is helping with emergency <a href="https://twitter.com/hashtag/foodassistance?src=hash&amp;ref_src=twsrc%5Etfw">#foodassistance</a>: <a href="https://t.co/7WCyVmGzjv">https://t.co/7WCyVmGzjv</a> <a href="https://t.co/GpbrViaGtq">pic.twitter.com/GpbrViaGtq</a></p>&mdash; USAID/Food for Peace (@USAIDFFP) <a href="https://twitter.com/USAIDFFP/status/976565382822670336?ref_src=twsrc%5Etfw">March 21, 2018</a></blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </div>
-                </div>
-                
-                <div class="timeline">
-                  <div class="updateinfo">
-                    <p>
-                      Feb 5, 2018
-                    </p>
-                    <h5>
-                      Recruited 10 volunteers to help us!
-                    </h5>
-                    <img class="progcirc" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F25.PNG?1521966688082">
-                  </div>
-                  <div class="tweets">
-                    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Deputy Assistant to the U.S. President <a href="https://twitter.com/LisaCurtisHF?ref_src=twsrc%5Etfw">@LisaCurtisHF</a> with <a href="https://twitter.com/USAmbBangladesh?ref_src=twsrc%5Etfw">@USAmbBangladesh</a>, recently visited a UNICEF Learning Center in the <a href="https://twitter.com/hashtag/Rohingya?src=hash&amp;ref_src=twsrc%5Etfw">#Rohingya</a> <a href="https://twitter.com/hashtag/refugee?src=hash&amp;ref_src=twsrc%5Etfw">#refugee</a> camps in <a href="https://twitter.com/hashtag/Bangladesh?src=hash&amp;ref_src=twsrc%5Etfw">#Bangladesh</a> 🙏🏽😊🙏🏽<a href="https://twitter.com/USAIDFFP?ref_src=twsrc%5Etfw">@USAIDFFP</a> <a href="https://twitter.com/StatePRM?ref_src=twsrc%5Etfw">@StatePRM</a> <a href="https://t.co/AnvwdROjcT">pic.twitter.com/AnvwdROjcT</a></p>&mdash; UNICEF Bangladesh (@UNICEFBD) <a href="https://twitter.com/UNICEFBD/status/974664350647533569?ref_src=twsrc%5Etfw">March 16, 2018</a></blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </div>
-                </div>
-              </div>
+          <div class="taskprogressholder">         
+            <div class="taskprogress">
+              <div class="yourdonation"><strong>Food Aid</strong></div>
+              <canvas class="fundingbar" id="c1"></canvas>
+              <div class="yourdonation">You put in <strong>$85</strong>.</div>
+              <canvas id="c2"></canvas>
             </div>
-
-            <div class="taskdetails" id="d2">
-              <div class="budget">
-                <h5>Budget Breakdown</h5>
-                <p>Packaging and delivery: $2000</p>
-                <p>5x Local hires: $2000</p>
-                <p>Drugs: $2120</p>
-                <p>Total: $6120</p>
-              </div>
-              <div class="socialmedia">
-                <h5>Project Updates</h5>
-                <div class="timeline">
-                  <div class="updateinfo">
-                    <p>
-                      Feb 5, 2018
-                    </p>
-                    <h5>
-                      Recruited 10 volunteers to help us!
-                    </h5>
-                    <img class="progcirc" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F50.PNG?1521966688478">
-                  </div>
-                  <div class="tweets">
-                    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">How does conflict contribute to hunger &amp; vice versa? Get the breakdown from <a href="https://twitter.com/Director_FFP?ref_src=twsrc%5Etfw">@Director_FFP</a>, including examples of where people are facing choices no one should face: stay where they are &amp; starve, or run for their lives in search of food. <a href="https://twitter.com/hashtag/SFRC?src=hash&amp;ref_src=twsrc%5Etfw">#SFRC</a> statement: <a href="https://t.co/NK7imglmyl">https://t.co/NK7imglmyl</a> <a href="https://t.co/YEuaDGilWG">pic.twitter.com/YEuaDGilWG</a></p>&mdash; USAID/Food for Peace (@USAIDFFP) <a href="https://twitter.com/USAIDFFP/status/977275077606739969?ref_src=twsrc%5Etfw">March 23, 2018</a></blockquote>
-                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </div>
-                </div>
-              </div>
-            </div> 
-              
-            <div class="taskdetails" id="d3">
-              <div class="budget">
-                <h5>Budget Breakdown</h5>
-                <p>Construction Materials: $6000</p>
-                <p>2000x Local manhour: $10000</p>
-                <p>Food: $2000</p>
-                <p>Total: $18000</p>
-              </div>
-              <div class="socialmedia">
-                <h5>Project Updates</h5>
-                <div class="timeline">
-                  <div class="updateinfo">
-                      <p>
-                        Feb 5, 2018
-                      </p>
-                      <h5>
-                        Recruited 10 volunteers to help us!
-                      </h5>
-                      <img class="progcirc" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2F25.PNG?1521966688082">
-                  </div>
-                  <div class="tweets">
-                    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">How does conflict contribute to hunger &amp; vice versa? Get the breakdown from <a href="https://twitter.com/Director_FFP?ref_src=twsrc%5Etfw">@Director_FFP</a>, including examples of where people are facing choices no one should face: stay where they are &amp; starve, or run for their lives in search of food. <a href="https://twitter.com/hashtag/SFRC?src=hash&amp;ref_src=twsrc%5Etfw">#SFRC</a> statement: <a href="https://t.co/NK7imglmyl">https://t.co/NK7imglmyl</a> <a href="https://t.co/YEuaDGilWG">pic.twitter.com/YEuaDGilWG</a></p>&mdash; USAID/Food for Peace (@USAIDFFP) <a href="https://twitter.com/USAIDFFP/status/977275077606739969?ref_src=twsrc%5Etfw">March 23, 2018</a></blockquote>
-                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                  </div>
-                </div>
-              </div>
-            </div> 
+            <div class="taskprogress">
+              <div class="yourdonation"><strong>Medical Aid</strong></div>
+              <canvas class="fundingbar" id="c3"></canvas>
+              <div class="yourdonation">You put in <strong>$85</strong>.</div>
+              <canvas id="c4"></canvas>
+            </div>
+            <div class="taskprogress">
+              <div class="yourdonation"><strong>Reconstruction</strong></div>
+              <canvas class="fundingbar" id="c5"></canvas>
+              <div class="yourdonation">You put in <strong>$85</strong>.</div>
+              <canvas id="c6"></canvas>
+            </div>
           </div>
-             
+        </div>
+        </a>
+        <div class="projrowright">
+          <p>2/3/2011 - Now</p>
+          <br><br><br><br><br><br>
+          <p class="totalcon">Total Contribution</p>
+          <p class="totalcon"><strong>$255</strong></p>
         </div>
       </div>
+      
+      <div class="projrow" id="p2">
+        <div class="projrowleft" id="pl2">
+          <div class="header">
+            <div class="projectpic"></div>
+            <h2>
+              2008 Sichuan Earthquake
+              <div class="lastupdate">Last updated 3 days ago.</div>
+            </h2>
+            <div class="sub smallsub">
+              <img class="check" src="https://cdn.glitch.com/2dfbdd4d-b162-42e3-bd43-956b82232489%2Fsign-check-icon.png?1521933033932">
+            </div>
+          </div>
+        </div>
+        
+        <div class="projrowright">        
+          <p class="totalcon">Total Contribution</p>
+          <p class="totalcon"><strong>$1050</strong></p>
+        </div>
       </div>
+    
+    <div class="projlist">
+      <h4>
+        Followed Projects
+      </h4>
+      <div class="projrow" id="pp1">None</div>
+    </div>
     </div>
   </body>
 </html>
-
-  
