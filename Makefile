@@ -1,7 +1,9 @@
 FORCE:
 
 # Initialize project from scratch
-# - build the MySQL schema
+# Make sure you have access to MySQL as root before running init
+# - build the database schema
+# - create new user and grant privileges to new DB (prompts for root pass) 
 # - install node modules (remove existing)
 # - build Sequelize models (remove existing)
 init: FORCE
